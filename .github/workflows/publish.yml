@@ -1,0 +1,106 @@
+## this workflow is used to publish dia-agents-baseservice to npmjs.com
+## Trigger condition:
+## 1. create a release
+name: Publish Analyst SDK
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.1.0
+        with:
+          submodules: true
+      - name: Setup Node.js
+        uses: actions/setup-node@v1.4.2
+        with:
+          node-version: 12
+      - name: Print git information and ls current folder
+        run: git status && pwd && ls
+      - name: Install node_modules
+        run: yarn
+      - run: npm test
+
+  publish-npm-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+        with:
+          submodules: true
+      - uses: actions/setup-node@v1.4.2
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: Get release version
+        run: |
+          VERSION=${GITHUB_REF##*/v}
+          echo "::set-env name=VERSION::${GITHUB_REF##*/v}"
+      # - name: Update package.json version
+      #   run: |
+      #     git config --global user.email "devops.bitspider@gmail.com"
+      #     git config --global user.name "Devops"
+      #     npm version $VERSION --allow-same-version
+      - name: Install node_modules
+        run: yarn
+      - name: Publish to npmjs.org
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      # - uses: actions/setup-node@v1.4.2
+      #   with:
+      #     node-version: 12
+      #     registry-url: https://npm.pkg.github.com/
+      # - name: Publish to github
+      #   run: |
+      #     npm publish
+      #     echo $VERSION > .published
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - run: |
+      #     rm -rf .published
+      #     echo "${VERSION}" > .published
+      # - run: |
+      #     curl -s -X DELETE -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/${GITHUB_REPOSITORY}/git/refs/tags/v${VERSION}"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Commit changes
+      #   uses: EndBug/add-and-commit@v4
+      #   with:
+      #     author_name: Devops
+      #     author_email: devops@bitspider.com
+      #     ref: release/v${{env.VERSION}}
+      #     message: "Apply changes caused by publish node_module"
+      #     add: "*"
+      #     tag: v${{env.VERSION}}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request to `master`
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "release/v${{env.VERSION}}"        # If blank, default: triggered branch
+          destination_branch: "master"                      # If blank, default: master
+          pr_title: "Merge to master - ${{env.VERSION}}"              # Title of pull request
+          pr_body: ":crown: successfully publish ${{env.VERSION}}. Pulling release/v${{env.VERSION}} into master"                                      # Full markdown support, requires pr_title to be set
+          pr_reviewer: "neoskx"                         # Comma-separated list (no spaces)
+          pr_assignee: "neoskx"                         # Comma-separated list (no spaces)
+          pr_label: "release"                               # Comma-separated list (no spaces)
+          # pr_draft: true                                    # Creates pull request as draft
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request to `develop`
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "release/v${{env.VERSION}}"        # If blank, default: triggered branch
+          destination_branch: "develop"                      # If blank, default: master
+          pr_title: "Merge to develop - ${{env.VERSION}}"              # Title of pull request
+          pr_body: ":crown: successfully publish ${{env.VERSION}}. Pulling release/v${{env.VERSION}} into develop"                                      # Full markdown support, requires pr_title to be set
+          pr_reviewer: "neoskx"                         # Comma-separated list (no spaces)
+          pr_assignee: "neoskx"                         # Comma-separated list (no spaces)
+          pr_label: "release"                               # Comma-separated list (no spaces)
+          # pr_draft: true                                    # Creates pull request as draft
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
