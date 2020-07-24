@@ -1,5 +1,5 @@
 {
-  "name": "bitspider-analyst-sdk",
+  "name": "bitspider-retailer-sdk",
   "version": "0.1.0",
   "scripts": {
     "test": "npm run lint",
@@ -7,6 +7,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "moment": "2.27.0",
+    "cors": "2.8.5",
     "axios": "0.19.2",
     "cheerio": "1.0.0-rc.3",
     "cookie-parser": "1.4.5",
@@ -18,13 +20,10 @@
     "server-destroy": "1.0.1",
     "ejs": "3.1.3",
     "lodash": "4.17.19",
-    "morgan": "1.10.0",
-    "serve-index": "1.9.1",
-    "server-destroy": "1.0.1",
-    "uuid": "8.1.0",
-    "winston": "3.2.1"
+    "uuid": "8.2.0",
+    "winston": "3.3.3"
   },
   "devDependencies": {
-    "eslint": "6.8.0"
+    "eslint": "7.5.0"
   }
 }
