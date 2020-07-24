@@ -1,2 +1,2 @@
-# bitspider-analyst-sdk
-A SDK for develop Analyst Service
+# bitspider-retailer-sdk
+A SDK for develop Retailer Service
