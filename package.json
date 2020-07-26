@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "scripts": {
     "test": "npm run lint",
+    "jsdoc": "jsdoc ./lib/server.js -d ./dist/apidoc -c ./scripts/configs/jsdoc.conf.js && node ./scripts/generateZip.js",
     "lint": "eslint ."
   },
   "license": "Apache-2.0",
@@ -27,6 +28,8 @@
     "lowdb": "1.0.0"
   },
   "devDependencies": {
-    "eslint": "7.5.0"
+    "eslint": "7.5.0",
+    "jsdoc": "3.6.5",
+    "cross-zip": "3.1.0"
   }
 }
