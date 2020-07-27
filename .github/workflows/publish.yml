@@ -6,6 +6,8 @@ on:
   release:
     types:
       - published
+env:
+  GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
   build:
@@ -26,6 +28,9 @@ jobs:
       - run: npm test
       - name: Generate JSDoc
         run: npm run jsdoc
+      - name: Get Release
+        id: get_release
+        uses: bruceadams/get-release@v1.2.0
       - name: Upload JSDoc
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
