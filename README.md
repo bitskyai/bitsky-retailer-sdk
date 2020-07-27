@@ -15,6 +15,9 @@ npm install bitspider-retailer-sdk
 ```
 
 ## Getting Started
+> Before continue, make sure you have a running Munew application. If you don't have, please follow [Install Munew](https://docs.munew.io/#cross-platform) to install it
+
+Create `index.js`, and copy follow code to it
 
 ```JavaScript
 const baseRetailerService = require("bitspider-retailer-sdk");
@@ -45,8 +48,14 @@ baseRetailerService.trigger(triggerFun);
 baseRetailerService.parse(parseFun);
 baseRetailerService.express();
 baseRetailerService.routers();
-await baseRetailerService.listen();
+baseRetailerService.listen();
 ```
+
+Change the `GLOBAL_ID` and `MUNEW_BASE_URL`.
+
+Now run `node index.js`, and open [http://localhost:8081](http://localhost:8081), now you start your Retailer Service, click trigger to add your trigger task.
+
+Please take a look of [Example Blog Node](https://github.com/munew/exampleblog-node)
 
 ## APIs
 
