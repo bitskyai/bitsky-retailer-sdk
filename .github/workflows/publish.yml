@@ -6,6 +6,8 @@ on:
   release:
     types:
       - published
+env:
+  GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
   build:
