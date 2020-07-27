@@ -1,8 +1,9 @@
 {
   "name": "bitspider-retailer-sdk",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "test": "npm run lint",
+    "jsdoc": "jsdoc ./lib/server.js -d ./dist/apidoc -c ./scripts/configs/jsdoc.conf.js && node ./scripts/generateZip.js",
     "lint": "eslint ."
   },
   "license": "Apache-2.0",
@@ -24,9 +25,12 @@
     "winston": "3.3.3",
     "xlsx": "0.16.4",
     "papaparse": "5.2.0",
-    "lowdb": "1.0.0"
+    "lowdb": "1.0.0",
+    "txt-file-to-json": "3.0.6"
   },
   "devDependencies": {
-    "eslint": "7.5.0"
+    "eslint": "7.5.0",
+    "jsdoc": "3.6.5",
+    "cross-zip": "3.1.0"
   }
 }
