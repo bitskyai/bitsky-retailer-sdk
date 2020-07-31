@@ -57,6 +57,17 @@ Now run `node index.js`, and open [http://localhost:8081](http://localhost:8081)
 
 Please take a look of [Example Blog Node](https://github.com/munew/exampleblog-node)
 
+If you want to save data to mongodb
+
+```JavaScript
+baseRetailerService.setConfigs({
+  GLOBAL_ID: "c29pOjoxNTkyNzk1NTI1NjAzOjpmZmFkNTI4Zi02NzYyLTRlNmQtOGQyYS05Njk1NzM0YjhkM2Q=",
+  MUNEW_BASE_URL: "http://localhost:9099",
+  CONNECTOR_TYPE: "mongodb",
+  MONGODB_URL: "mongodb://username@password.mlab.com:47987/retailer"
+});
+```
+
 ## APIs
 
 Please download [API Doc](https://github.com/munew/bitspider-retailer-sdk/release/latest/apidoc.zip), and open it in your browser
