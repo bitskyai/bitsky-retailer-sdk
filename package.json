@@ -1,6 +1,6 @@
 {
   "name": "bitspider-retailer-sdk",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "scripts": {
     "test": "npm run lint",
     "jsdoc": "jsdoc ./lib/server.js -d ./dist/apidoc -c ./scripts/configs/jsdoc.conf.js && node ./scripts/generateZip.js",
