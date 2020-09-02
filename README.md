@@ -11,11 +11,11 @@ This is a [Node.js](https://nodejs.org/en/) module and available through the [np
 Run following command to install:
 
 ```bash
-npm install bitspider-retailer-sdk
+npm install @bitskyai/retailer-sdk
 ```
 
 ## Getting Started
-> Before continue, make sure you have a running Munew application. If you don't have, please follow [Install Munew](https://docs.munew.io/#cross-platform) to install it
+> Before continue, make sure you have a running BitSky application. If you don't have, please follow [Install BitSKy](https://docs.bitsky.ai/#setup-bitsky) to install it
 
 Create `index.js`, and copy follow code to it
 
@@ -26,7 +26,7 @@ const triggerFun = async function(){
   return {
     tasks: [
       baseRetailerService.generateTask({
-        url: "http://exampleblog.munew.io/"
+        url: "http://exampleblog.bitsky.ai/"
       })]
   }
 }
@@ -55,7 +55,7 @@ Change the `GLOBAL_ID` and `MUNEW_BASE_URL`.
 
 Now run `node index.js`, and open [http://localhost:8081](http://localhost:8081), now you start your Retailer Service, click trigger to add your trigger task.
 
-Please take a look of [Example Blog Node](https://github.com/munew/exampleblog-node)
+Please take a look of [Example Blog Node](https://github.com/bitskyai/exampleblog-node)
 
 If you want to save data to mongodb
 
@@ -70,7 +70,7 @@ baseRetailerService.setConfigs({
 
 ## APIs
 
-Please download [API Doc](https://github.com/munew/bitspider-retailer-sdk/release/latest/apidoc.zip), and open it in your browser
+Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/release/latest/apidoc.zip), and open it in your browser
 
 > Will host to a server in future
 
