@@ -1,6 +1,6 @@
 {
   "name": "exampleblog",
-  "description": "crawl https://exampleblog.munew.io/",
+  "description": "crawl https://exampleblog.bitsky.ai/",
   "keywords": [
     "web crawling",
     "web scraping",
@@ -9,14 +9,14 @@
     "automation",
     "nodejs"
   ],
-  "website": "https://munew.io",
-  "logo": "https://raw.githubusercontent.com/munew/dia-electron/master/assets/icons/munew512.png",
+  "website": "https://bitsky.ai",
+  "logo": "https://raw.githubusercontent.com/bitskyai/bitsky-electron/master/assets/icons/munew512.png",
   "env": {
     "MUNEW_BASE_URL": {
-      "description": "Your Munew Application's base url. Example: https://munew.herokuapp.com"
+      "description": "Your Munew Application's base url. Example: https://bitskyai.herokuapp.com"
     },
     "GLOBAL_ID": {
-      "description": "Your Analyst Application Global ID. https://docs.munew.io/how-tos/how-to-set-an-analyst-service-global_id"
+      "description": "Your Analyst Application Global ID. https://docs.bitsky.ai/how-tos/how-to-set-an-analyst-service-global_id"
     },
     "INIT_TASKS_NUMBER": {
       "description": "How many tasks for each trigger call you want. Default is 1, this variable is useful for test purpose",
