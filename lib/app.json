@@ -12,8 +12,8 @@
   "website": "https://bitsky.ai",
   "logo": "https://raw.githubusercontent.com/bitskyai/bitsky-electron/master/assets/icons/munew512.png",
   "env": {
-    "MUNEW_BASE_URL": {
-      "description": "Your Munew Application's base url. Example: https://bitskyai.herokuapp.com"
+    "BITSKY_BASE_URL": {
+      "description": "Your BitSky Application's base url. Example: https://bitskyai.herokuapp.com"
     },
     "GLOBAL_ID": {
       "description": "Your Analyst Application Global ID. https://docs.bitsky.ai/how-tos/how-to-set-an-analyst-service-global_id"
