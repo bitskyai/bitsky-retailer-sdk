@@ -104,7 +104,7 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
       "default": 100,
       "description": "Priority of this task. Only compare priority for same Retailer Service, doesn't compare cross Retailer Service. Bigger value low priority. Priority value 1 is higher than priority value 2."
     },
-    "suitableAgents": {
+    "suitableProducers": {
       "type": "array",
       "description": "What kind of agents can execute this task",
       "default": ["HEADLESSBROWSER"],

@@ -27,7 +27,7 @@
     "papaparse": "5.3.0",
     "lowdb": "1.0.0",
     "txt-file-to-json": "3.0.6",
-    "mongodb":"3.6.0"
+    "mongodb": "3.6.0"
   },
   "devDependencies": {
     "eslint": "7.8.0",
