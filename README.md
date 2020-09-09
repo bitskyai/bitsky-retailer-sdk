@@ -106,7 +106,7 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
     },
     "suitableProducers": {
       "type": "array",
-      "description": "What kind of agents can execute this task",
+      "description": "What kind of producers can execute this task",
       "default": ["HEADLESSBROWSER"],
       "items": {
         "type": "string",
@@ -122,7 +122,7 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
       "properties": {
         "script": {
           "type": "string",
-          "description": "Code want to execute after **window.onload**. If you need agent to execute your code, Only work with **HEADLESSBROSWER** agent"
+          "description": "Code want to execute after **window.onload**. If you need producer to execute your code, Only work with **HEADLESSBROSWER** producer"
         }
       }
     }
