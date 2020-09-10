@@ -38,10 +38,10 @@ const parseFun = async function({req}){
     data: data
   }
 }
-// You must set `GLOBAL_ID` and `MUNEW_BASE_URL`
+// You must set `GLOBAL_ID` and `BITSKY_BASE_URL`
 baseRetailerService.setConfigs({
   GLOBAL_ID: "c29pOjoxNTkyNzk1NTI1NjAzOjpmZmFkNTI4Zi02NzYyLTRlNmQtOGQyYS05Njk1NzM0YjhkM2Q=",
-  MUNEW_BASE_URL: "http://localhost:9099",
+  BITSKY_BASE_URL: "http://localhost:9099",
 });
 baseRetailerService.init();
 baseRetailerService.trigger(triggerFun);
@@ -51,7 +51,7 @@ baseRetailerService.routers();
 baseRetailerService.listen();
 ```
 
-Change the `GLOBAL_ID` and `MUNEW_BASE_URL`.
+Change the `GLOBAL_ID` and `BITSKY_BASE_URL`.
 
 Now run `node index.js`, and open [http://localhost:8081](http://localhost:8081), now you start your Retailer Service, click trigger to add your trigger task.
 
@@ -62,7 +62,7 @@ If you want to save data to mongodb
 ```JavaScript
 baseRetailerService.setConfigs({
   GLOBAL_ID: "c29pOjoxNTkyNzk1NTI1NjAzOjpmZmFkNTI4Zi02NzYyLTRlNmQtOGQyYS05Njk1NzM0YjhkM2Q=",
-  MUNEW_BASE_URL: "http://localhost:9099",
+  BITSKY_BASE_URL: "http://localhost:9099",
   CONNECTOR_TYPE: "mongodb",
   MONGODB_URL: "mongodb://username@password.mlab.com:47987/retailer"
 });
@@ -81,13 +81,13 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
 ```json
 {
   "type": "object",
-  "required": ["url", "soi"],
+  "required": ["url", "retailer"],
   "properties": {
     "url": {
       "type": "string",
       "description": "web page url that need to be processed"
     },
-    "soi": {
+    "retailer": {
       "type": "object",
       "required": ["globalId"],
       "additionalProperties": false,
@@ -104,9 +104,9 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
       "default": 100,
       "description": "Priority of this task. Only compare priority for same Retailer Service, doesn't compare cross Retailer Service. Bigger value low priority. Priority value 1 is higher than priority value 2."
     },
-    "suitableAgents": {
+    "suitableProducers": {
       "type": "array",
-      "description": "What kind of agents can execute this task",
+      "description": "What kind of producers can execute this task",
       "default": ["HEADLESSBROWSER"],
       "items": {
         "type": "string",
@@ -122,7 +122,7 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
       "properties": {
         "script": {
           "type": "string",
-          "description": "Code want to execute after **window.onload**. If you need agent to execute your code, Only work with **HEADLESSBROSWER** agent"
+          "description": "Code want to execute after **window.onload**. If you need producer to execute your code, Only work with **HEADLESSBROSWER** producer"
         }
       }
     }
@@ -139,7 +139,7 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
   "properties": {
     "tasks": {
       "type": "array",
-      "description": "`tasks`: Send `tasks` to **Munew** application",
+      "description": "`tasks`: Send `tasks` to **BitSky** application",
       "items": {
         "$ref": "#schema/task"
       }
@@ -158,7 +158,7 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
   "properties": {
     "tasks": {
       "type": "array",
-      "description": "Send `tasks` to **Munew** application",
+      "description": "Send `tasks` to **BitSky** application",
       "items": {
         "$ref": "#schema/task"
       }
