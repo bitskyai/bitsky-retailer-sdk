@@ -10,7 +10,7 @@
     "nodejs"
   ],
   "website": "https://bitsky.ai",
-  "logo": "https://raw.githubusercontent.com/bitskyai/bitsky-electron/master/assets/icons/munew512.png",
+  "logo": "https://raw.githubusercontent.com/bitskyai/bitsky-desktop-app/develop/assets/icons/bitsky512.png",
   "env": {
     "BITSKY_BASE_URL": {
       "description": "Your BitSky Application's base url. Example: https://bitskyai.herokuapp.com"
