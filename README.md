@@ -81,13 +81,13 @@ Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/releas
 ```json
 {
   "type": "object",
-  "required": ["url", "soi"],
+  "required": ["url", "retailer"],
   "properties": {
     "url": {
       "type": "string",
       "description": "web page url that need to be processed"
     },
-    "soi": {
+    "retailer": {
       "type": "object",
       "required": ["globalId"],
       "additionalProperties": false,
