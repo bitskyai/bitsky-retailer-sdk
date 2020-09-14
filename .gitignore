@@ -106,4 +106,5 @@ dist
 data.json
 
 apidoc
-package-lock.json
+#package-lock.json
+yarn.lock
