@@ -9,7 +9,7 @@ WORKDIR /usr/exampleblog
 COPY . .
 
 # Only install production dependencies
-RUN yarn --production=true
+RUN npm ci --only=production
 
 EXPOSE 3000
 CMD ["node", "./bin/www"]
