@@ -41,10 +41,9 @@ const parseFun = async function({req}){
 }
 // You must set `GLOBAL_ID` and `BITSKY_BASE_URL`
 baseRetailerService.setConfigs({
-  GLOBAL_ID: "c29pOjoxNTkyNzk1NTI1NjAzOjpmZmFkNTI4Zi02NzYyLTRlNmQtOGQyYS05Njk1NzM0YjhkM2Q=",
+  GLOBAL_ID: "32e9671f-8f3c-45ac-8dfe-d5b5d9a0cbc1",
   BITSKY_BASE_URL: "http://localhost:9099",
 });
-baseRetailerService.init();
 baseRetailerService.trigger(triggerFun);
 baseRetailerService.parse(parseFun);
 baseRetailerService.express();
@@ -62,7 +61,7 @@ If you want to save data to mongodb
 
 ```JavaScript
 baseRetailerService.setConfigs({
-  GLOBAL_ID: "c29pOjoxNTkyNzk1NTI1NjAzOjpmZmFkNTI4Zi02NzYyLTRlNmQtOGQyYS05Njk1NzM0YjhkM2Q=",
+  GLOBAL_ID: "32e9671f-8f3c-45ac-8dfe-d5b5d9a0cbc1",
   BITSKY_BASE_URL: "http://localhost:9099",
   CONNECTOR_TYPE: "mongodb",
   MONGODB_URL: "mongodb://username@password.mlab.com:47987/retailer"
@@ -71,9 +70,7 @@ baseRetailerService.setConfigs({
 
 ## APIs
 
-Please download [API Doc](https://github.com/bitskyai/bitsky-retailer-sdk/release/latest/apidoc.zip), and open it in your browser
-
-> Will host to a server in future
+Please open [API Doc](https://apis.bitsky.ai/bitsky-retailer-sdk/BaseRetailerService.html) it in your browser
 
 ## Schemas
 
