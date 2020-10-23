@@ -61,6 +61,7 @@ jobs:
         run: cp -rf bitsky-retailer-sdk/dist/apidoc bitsky-apis/bitsky-retailer-sdk
       - uses: EndBug/add-and-commit@v5
         with:
+          branch: master
           cwd: ./bitsky-apis
           message: Update bitsky-retailer-sdk api doc - version ${{env.VERSION}}
         env:
