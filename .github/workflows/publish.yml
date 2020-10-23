@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
+      - name: Print git information and ls current folder
+        run: git status && pwd && ls
       - name: Get release version
         run: |
           VERSION=${GITHUB_REF##*/v}
@@ -25,8 +27,6 @@ jobs:
         uses: actions/setup-node@v1.4.2
         with:
           node-version: 12
-      - name: Print git information and ls current folder
-        run: git status && pwd && ls
       - name: Install node_modules
         run: yarn
       - run: npm test
@@ -49,6 +49,8 @@ jobs:
         uses: actions/checkout@v2
         with:
             repository: 'bitskyai/bitsky-apis'
+      - name: Print bitsky-retailer-sdk git information and ls current folder
+        run: git status && pwd && ls
       - name: Remove old bitsky-retailer-sdk
         run: rm -rf bitsky-retailer-sdk
       - name: Copy new api doc to bitsky-retailer-sdk
