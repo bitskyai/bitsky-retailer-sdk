@@ -32,7 +32,7 @@ jobs:
         run: cd bitsky-retailer-sdk && yarn
       - run: cd bitsky-retailer-sdk && npm test
       - name: Generate JSDoc
-        run: cd cd bitsky-retailer-sdk&& npm run jsdoc
+        run: cd bitsky-retailer-sdk && npm run jsdoc
       - name: Get Release
         id: get_release
         uses: bruceadams/get-release@v1.2.0
