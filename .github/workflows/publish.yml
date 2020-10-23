@@ -59,13 +59,17 @@ jobs:
         run: ls bitsky-retailer-sdk/dist && ls bitsky-retailer-sdk/dist/apidoc
       - name: Copy new api doc to bitsky-retailer-sdk
         run: cp -rf bitsky-retailer-sdk/dist/apidoc bitsky-apis/bitsky-retailer-sdk
-      - uses: EndBug/add-and-commit@v5
+      - name: Commit files
+        run: |
+          cd ./bitsky-apis
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Update bitsky-retailer-sdk api doc - version ${{ env.VERSION }}" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
-          cwd: ./bitsky-apis
-          message: Update bitsky-retailer-sdk api doc - version ${{env.VERSION}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-npm-gpr:
     needs: build
