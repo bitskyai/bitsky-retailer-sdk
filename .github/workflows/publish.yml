@@ -70,7 +70,7 @@ jobs:
         with:
           directory: bitsky-apis
           repository: bitskyai/bitsky-apis
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.FULL_PERMISSIONS }}
           branch: master
 
   publish-npm-gpr:
