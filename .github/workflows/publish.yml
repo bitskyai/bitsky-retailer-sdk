@@ -59,10 +59,10 @@ jobs:
         run: ls bitsky-retailer-sdk/dist && ls bitsky-retailer-sdk/dist/apidoc
       - name: Copy new api doc to bitsky-retailer-sdk
         run: cp -rf bitsky-retailer-sdk/dist/apidoc bitsky-apis/bitsky-retailer-sdk
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: EndBug/add-and-commit@v5
         with:
-          repository: ./bitsky-apis
-          commit_message: Update bitsky-retailer-sdk api doc - version ${{env.VERSION}}
+          cwd: ./bitsky-apis
+          message: Update bitsky-retailer-sdk api doc - version ${{env.VERSION}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
