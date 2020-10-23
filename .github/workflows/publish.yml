@@ -61,6 +61,7 @@ jobs:
         run: cp -rf bitsky-retailer-sdk/dist/apidoc bitsky-apis/bitsky-retailer-sdk
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          repository: ./bitsky-apis
           commit_message: Update bitsky-retailer-sdk api doc - version ${{env.VERSION}}
 
   publish-npm-gpr:
