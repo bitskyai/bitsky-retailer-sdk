@@ -16,7 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2.1.0
         with:
+          path: bitsky-retailer-sdk
           submodules: true
+      - name: Print git information and ls current folder
+        run: cd bitsky-retailer-sdk && git status && pwd && ls
       - name: Get release version
         run: |
           VERSION=${GITHUB_REF##*/v}
@@ -25,13 +28,11 @@ jobs:
         uses: actions/setup-node@v1.4.2
         with:
           node-version: 12
-      - name: Print git information and ls current folder
-        run: git status && pwd && ls
       - name: Install node_modules
-        run: yarn
-      - run: npm test
+        run: cd bitsky-retailer-sdk && yarn
+      - run: cd bitsky-retailer-sdk && npm test
       - name: Generate JSDoc
-        run: npm run jsdoc
+        run: cd bitsky-retailer-sdk && npm run jsdoc
       - name: Get Release
         id: get_release
         uses: bruceadams/get-release@v1.2.0
@@ -42,20 +43,35 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./dist/apidoc.zip
+          asset_path: ./bitsky-retailer-sdk/dist/apidoc.zip
           asset_name: 'apidoc.zip'
           asset_content_type: application/zip
-      - name: Checkout bitskyai/bitsky-apis
-        uses: actions/checkout@v2
-        with:
-            repository: 'bitskyai/bitsky-apis'
-      - name: Remove old bitsky-retailer-sdk
-        run: rm -rf bitsky-retailer-sdk
-      - name: Copy new api doc to bitsky-retailer-sdk
-        run: cp -rf ../dist/apidoc bitsky-retailer-sdk
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update bitsky-retailer-sdk api doc - version ${{env.VERSION}}
+      # - name: Checkout bitskyai/bitsky-apis
+      #   uses: actions/checkout@v2
+      #   with:
+      #     path: bitsky-apis
+      #     repository: 'bitskyai/bitsky-apis'
+      # - name: Print bitsky-retailer-sdk git information and ls current folder
+      #   run: cd bitsky-apis && git status && pwd && ls
+      # - name: Remove old bitsky-retailer-sdk
+      #   run: rm -rf bitsky-apis/bitsky-retailer-sdk
+      # - name: list api doc
+      #   run: ls bitsky-retailer-sdk/dist && ls bitsky-retailer-sdk/dist/apidoc
+      # - name: Copy new api doc to bitsky-retailer-sdk
+      #   run: cp -rf bitsky-retailer-sdk/dist/apidoc bitsky-apis/bitsky-retailer-sdk
+      # - name: Commit files
+      #   run: |
+      #     cd ./bitsky-apis
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git commit -m "Update bitsky-retailer-sdk api doc - version ${{ env.VERSION }}" -a
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     directory: bitsky-apis
+      #     repository: bitskyai/bitsky-apis
+      #     github_token: ${{ secrets.FULL_PERMISSIONS }}
+      #     branch: master
 
   publish-npm-gpr:
     needs: build
