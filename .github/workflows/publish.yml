@@ -63,6 +63,8 @@ jobs:
         with:
           repository: ./bitsky-apis
           commit_message: Update bitsky-retailer-sdk api doc - version ${{env.VERSION}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-npm-gpr:
     needs: build
