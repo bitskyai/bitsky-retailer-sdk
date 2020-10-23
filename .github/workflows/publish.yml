@@ -46,32 +46,32 @@ jobs:
           asset_path: ./bitsky-retailer-sdk/dist/apidoc.zip
           asset_name: 'apidoc.zip'
           asset_content_type: application/zip
-      - name: Checkout bitskyai/bitsky-apis
-        uses: actions/checkout@v2
-        with:
-          path: bitsky-apis
-          repository: 'bitskyai/bitsky-apis'
-      - name: Print bitsky-retailer-sdk git information and ls current folder
-        run: cd bitsky-apis && git status && pwd && ls
-      - name: Remove old bitsky-retailer-sdk
-        run: rm -rf bitsky-apis/bitsky-retailer-sdk
-      - name: list api doc
-        run: ls bitsky-retailer-sdk/dist && ls bitsky-retailer-sdk/dist/apidoc
-      - name: Copy new api doc to bitsky-retailer-sdk
-        run: cp -rf bitsky-retailer-sdk/dist/apidoc bitsky-apis/bitsky-retailer-sdk
-      - name: Commit files
-        run: |
-          cd ./bitsky-apis
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m "Update bitsky-retailer-sdk api doc - version ${{ env.VERSION }}" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          directory: bitsky-apis
-          repository: bitskyai/bitsky-apis
-          github_token: ${{ secrets.FULL_PERMISSIONS }}
-          branch: master
+      # - name: Checkout bitskyai/bitsky-apis
+      #   uses: actions/checkout@v2
+      #   with:
+      #     path: bitsky-apis
+      #     repository: 'bitskyai/bitsky-apis'
+      # - name: Print bitsky-retailer-sdk git information and ls current folder
+      #   run: cd bitsky-apis && git status && pwd && ls
+      # - name: Remove old bitsky-retailer-sdk
+      #   run: rm -rf bitsky-apis/bitsky-retailer-sdk
+      # - name: list api doc
+      #   run: ls bitsky-retailer-sdk/dist && ls bitsky-retailer-sdk/dist/apidoc
+      # - name: Copy new api doc to bitsky-retailer-sdk
+      #   run: cp -rf bitsky-retailer-sdk/dist/apidoc bitsky-apis/bitsky-retailer-sdk
+      # - name: Commit files
+      #   run: |
+      #     cd ./bitsky-apis
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git commit -m "Update bitsky-retailer-sdk api doc - version ${{ env.VERSION }}" -a
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     directory: bitsky-apis
+      #     repository: bitskyai/bitsky-apis
+      #     github_token: ${{ secrets.FULL_PERMISSIONS }}
+      #     branch: master
 
   publish-npm-gpr:
     needs: build
